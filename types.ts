@@ -25,16 +25,37 @@ type questData = {
     questName: string;
     account: string;
     end: number;
-    tokens?: TokenInfo[];
-    socialActions?: socialAction;
-    contractActions?: contractAction;
-    quiz?: Quiz
-    nfts?: number[];
-    wls?: number;
-    scoring?: {
-        [taskId: string]: number;
-        quiz?: number;
-    }
+    communityId: number;
+    questId: number;
+    avatar?: string;
+    tasks?: Task[];
 }
 
-export {questData}
+type communityData = {
+    communityName: string;
+    account: string;
+    communityId: number;
+    avatar?: string;
+    banners?: string[];
+    questIds?: number[];
+    score?: number;
+    followers?: number;
+}
+
+type Task: "socialAction" | "contractAction" | "Quiz"
+
+
+type taskData = {
+    taskId: number;
+    taskName: string;
+    type: "social" | "action" | "quiz";
+    account: string;
+    requirements?: string[];
+    reward?: number;
+    description?: string;
+    timescompleted?: number;
+    relatedquest?: number;
+}
+}
+
+export {questData, communityData, taskData}
